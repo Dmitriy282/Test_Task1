@@ -24,18 +24,18 @@ pipeline {
 
       }
     }
-    stage('build') {
-      agent {
-        docker {
-          image 'node:16.20.0'
-          args '-e HOME=$WORKSPACE'
-        }
-        }
-      steps {
-        sh 'echo $HOME'
-      }
+//     stage('build') {
+//      agent {
+//         docker {
+//           image 'node:16.20.0'
+//           args '-e HOME=$WORKSPACE'
+//         }
+//         }
+//       steps {
+//         sh 'echo $HOME'
+//       }
 
-  }
+//   }
 }
 post {
     success {
