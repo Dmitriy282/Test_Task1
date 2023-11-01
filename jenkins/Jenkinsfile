@@ -1,0 +1,46 @@
+pipeline {
+  agent none
+       parameters {
+         choice choices: 'model-base-python3\nex-py3', name: 'MODELNAME'
+    //            string(
+    //       			name: 'CODE_REPO',
+    //       			defaultValue: 'https://github.com/RoboInterativo/simple-back-front.git',
+    //       			description: 'CODE_REPO'
+		//             )
+		//  string(
+		// 	name: 'BRANCH',
+		// 	defaultValue: 'main',
+		// 	description: 'BRANCH'
+		// )
+
+
+    }
+  stages {
+    stage('SCM') {
+      agent any
+      steps {
+        sh 'rm -rf app'
+        sh 'echo $WORKSPACE'
+
+      }
+    }
+    stage('build') {
+      agent {
+        docker {
+          image 'node:16.20.0'
+          args '-e HOME=$WORKSPACE'
+        }
+        }
+      steps {
+        sh 'echo $HOME'
+      }
+
+  }
+}
+post {
+    success {
+        println 'WELLDONE'
+        //Сохранить артифакты
+    }
+  }
+}
