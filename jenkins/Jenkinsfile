@@ -41,7 +41,7 @@ pipeline {
             cd app/my-website2
             node --version
             npm install -f && npm run build
-            ls app/front/build
+            ls app/my-website2/build
             """
       }
     }
