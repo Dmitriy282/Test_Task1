@@ -32,8 +32,10 @@ pipeline {
                 submoduleCfg: [], userRemoteConfigs: [[credentialsId: CREDS,
                 url: CODE_REPO]]])
             sh 'ls app/'
-        // sh 'cd app/front && npm install -f && npm run build'
-        // sh 'ls app/front/build'
+            sh 'wget https://nodejs.org/dist/v18.18.2/node-v18.18.2-linux-x64.tar.gz'
+            sh 'tar xzvf node-v18.18.2-linux-x64.tar.gz'
+            sh 'export PATH="${WORKPACE}/node-v18.18.2-linux-x64/bin:$PATH  && cd app/my-website2 && npm install -f && npm run build'
+            sh 'ls app/front/build'
       }
     }
 }
