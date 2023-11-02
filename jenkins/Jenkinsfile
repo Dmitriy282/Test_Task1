@@ -33,7 +33,7 @@ pipeline {
                 submoduleCfg: [], userRemoteConfigs: [[credentialsId: CREDS,
                 url: CODE_REPO]]])
             sh 'ls app/'
-            sh 'wget https://nodejs.org/dist/v17.9.1/node-v17.9.1-headers.tar.gz'
+            sh 'wget https://nodejs.org/dist/v17.9.1/node-v17.9.1-linux-x64.tar.gz'
             sh 'tar xzvf node-v17.9.1-headers.tar.gz'
             sh 'export PATH=${WORKSPACE}/node-v17.9.1-linux-x64/bin:$PATH  && cd app/my-website2 && node --version && npm install -f && npm run build'
             sh 'ls app/front/build'
